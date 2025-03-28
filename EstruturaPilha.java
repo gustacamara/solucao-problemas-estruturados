@@ -62,9 +62,9 @@ public class EstruturaPilha {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Digite o tamanho da lista: ");
-        int size = entrada.nextInt();
+        int tamanho = entrada.nextInt();
 
-        Pilha pilha = new Pilha(size, new int[ size ]);
+        Pilha pilha = new Pilha(tamanho, new int[ tamanho ]);
 
         while (true) {
             System.out.println("\nEscolha oque gostaria de fazer com a sua fila: \n" +
@@ -110,7 +110,4 @@ public class EstruturaPilha {
         }
 
     }
-
-
-
 }
