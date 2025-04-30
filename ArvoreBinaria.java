@@ -2,7 +2,7 @@ public class ArvoreBinaria {
     private No raiz;
 
     class No {
-        private int valor;
+        private int info;
         private No direita;
         private No esquerda;
 
@@ -22,45 +22,45 @@ public class ArvoreBinaria {
             this.esquerda = esquerda;
         }
 
-        public No(int valor) {
-            this.valor = valor;
+        public No(int info) {
+            this.info = info;
             this.esquerda = null;
             this.direita = null;
         }
     }
-        void inserir(int valor) {
-            raiz = inserir(raiz, valor);
+        void inserir(int info) {
+            raiz = inserir(raiz, info);
         }
 
-        No inserir(No node, int valor) {
+        No inserir(No node, int info) {
             if(node == null) {
-                return new No(valor);
+                return new No(info);
             }
-            if(valor < node.valor) {
-                node.esquerda = inserir(node.esquerda, valor);
-            } else if ( valor > node.valor) {
-                node.direita = inserir(node.direita, valor);
+            if(info < node.info) {
+                node.esquerda = inserir(node.esquerda, info);
+            } else if ( info > node.info) {
+                node.direita = inserir(node.direita, info);
             }
             return node;
         }
 
-        void remover(int valor){
-            raiz = remover(raiz, valor);
+        void remover(int info){
+            raiz = remover(raiz, info);
         }
 
-        No remover(No node, int valor) {
+        No remover(No node, int info) {
             if (node == null) return null;
-            if (valor > node.valor) {
-                node.esquerda = remover(node.esquerda, valor);
+            if (info > node.info) {
+                node.esquerda = remover(node.esquerda, info);
             }
-            else if (valor < node.valor) {
-                node.direita = remover(node.direita, valor);
+            else if (info < node.info) {
+                node.direita = remover(node.direita, info);
             }else{
 
                 if( node.esquerda != null && node.direita != null) {
                     No maiorEsquerda = encontrarMaior(node.esquerda);
-                    node.valor = maiorEsquerda.valor;
-                    node.esquerda = remover(node.esquerda, maiorEsquerda.valor);
+                    node.info = maiorEsquerda.info;
+                    node.esquerda = remover(node.esquerda, maiorEsquerda.info);
                 } else if (node.esquerda != null) {
                     node = node.esquerda;
                 }else {
@@ -82,19 +82,19 @@ public class ArvoreBinaria {
             if (node == null) return;
             desenhar(node.direita, nivel + 1);
             for (int i = 0; i < nivel; i++) System.out.print("\t");
-            System.out.println(node.valor);
+            System.out.println(node.info);
             desenhar(node.esquerda, nivel + 1);
         }
 
     void emOrdem(No node) {
         if (node == null) return;
         emOrdem(node.esquerda);
-        System.out.print(node.valor + " ");
+        System.out.print(node.info + " ");
         emOrdem(node.direita);
     }
     void preOrdem(No node) {
         if (node != null) {
-            System.out.print(node.valor + " ");
+            System.out.print(node.info + " ");
             preOrdem(node.esquerda);
             preOrdem(node.direita);
         }
@@ -103,7 +103,7 @@ public class ArvoreBinaria {
         if (node != null) {
             posOrdem(node.esquerda);
             posOrdem(node.direita);
-            System.out.print(node.valor + " ");
+            System.out.print(node.info + " ");
         }
     }
 
